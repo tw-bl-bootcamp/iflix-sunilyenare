@@ -23,16 +23,13 @@ _TBD Please update as per stack choices being used in your private project repo_
 * CSS 3
 
 ### Frameworks
-* Springboot / Nodejs / Express
-* React / Angular
-* JUnit 5 / Mockito / Mocha
+* Springboot 
+* React Js
+* JUnit 5
 
 ### Infra
-* MongoDB
 * MySQL
-* RabbitMQ
-* Redis
-* Jenkins
+
 
 ## Useful Commands
 _TBD - Please enter the commands to build, test and run the app at the very least below_
