@@ -1,6 +1,19 @@
 .gradle
 /build/
 
+  
+HELP.md
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -12,3 +25,5 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+node_modules/
