@@ -1,9 +1,12 @@
 package com.thoughtworks.bootcamp.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -21,7 +24,13 @@ public class Theater {
 	
 	@NotEmpty(message = "please provide venue name")
 	private String venue;
-
+	
+	@ManyToMany(mappedBy = "theater")
+	private List<User> user;
+	
+	@ManyToMany(mappedBy = "theater")
+	private List<Movie> movie;
+	
 	public long getTheaterId() {
 		return theaterId;
 	}
@@ -46,14 +55,7 @@ public class Theater {
 		this.venue = venue;
 	}
 
-	public Theater(long theaterId,
-			@NotEmpty(message = "please provide theater name") @NotNull(message = "please provide theater name") String name,
-			@NotEmpty(message = "please provide venue name") String venue) {
-		super();
-		this.theaterId = theaterId;
-		this.name = name;
-		this.venue = venue;
-	}
+	
 
 	public Theater() {
 		super();

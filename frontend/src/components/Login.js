@@ -96,7 +96,7 @@ class Login extends Component {
                                  width='11%' 
                                  height='11%'
                                 src={require('../assets/Papernotes.svg')}
-                                alt="Collaborator"
+                                alt="icon"
                             />
               </Typography>
             <CssBaseline />

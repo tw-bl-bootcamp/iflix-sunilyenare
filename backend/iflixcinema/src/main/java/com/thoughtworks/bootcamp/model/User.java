@@ -1,10 +1,14 @@
 package com.thoughtworks.bootcamp.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -30,16 +34,10 @@ public class User {
 	@NotNull(message = "please provide valid password")
 	private String password;
 	
-	public User(long userId,
-			@NotEmpty(message = "please provide your name") @NotNull(message = "please provide your name") String name,
-			@Email(regexp = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.(?:[A-Z]{2,}|com|org))+$") @NotEmpty(message = "Please provide valid email") @NotNull(message = "Please provide valid email") String email,
-			@NotEmpty(message = "please provide valid password") @NotNull(message = "please provide valid password") String password) {
-		super();
-		this.userId = userId;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-	}
+	@ManyToMany
+	private List<Theater> theater;
+	
+	
 
 	public long getUserId() {
 		return userId;
