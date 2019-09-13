@@ -1,44 +1,14 @@
 import React, { Component } from 'react'
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
-import Tooltip from '@material-ui/core/Tooltip';
-import InputBase from "@material-ui/core/InputBase";
-import Search from "@material-ui/icons/Search";
-import RefreshIcon from "@material-ui/icons/Refresh";
-import GridView from "@material-ui/icons/ViewAgendaOutlined";
-import ListView from "@material-ui/icons/BorderAllRounded";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MenuIcon from "@material-ui/icons/Menu";
-const thm = createMuiTheme({
-    overrides: {
-      MuiDrawer: {
-        paperAnchorLeft: {
-          top: 60,
-          width: 240,
-          background: "white",
-          border: "transparent"
-        },
-        paperAnchorDockedLeft: {
-          borderColor: "white"
-        }
-      },
-      MuiAppBar: {
-        colorPrimary: {
-          color: "black",
-          backgroundColor: "whitesmoke"
-        },
-        root: {
-          left: "auto"
-        }
-      }
-    }
-  });
+import Button from "@material-ui/core/Button";
+import { Box } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Snackbar from "@material-ui/core/Snackbar";
+import { userLogin } from "../services/UserService";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -53,28 +23,94 @@ export default class Dashboard extends Component {
   
     render() {
         return (
-            <div className="dashboard">
-        <MuiThemeProvider theme={thm}>
-          <AppBar position="fixed" color="inherit">
+            <div className="root">
+        <Container  maxWidth='xs'>
+         
           <Toolbar>
               <img
                 className="img"
                 src={require("../assets/film-reel.svg")}
-                alt="fundoo icon"
+                alt="cinema icon"
               />
               &nbsp;
               <div className="titleName">
                 <Typography variant="h5" className="title">
-                  IFlix cinema
+                  IFlix cinema..
                 </Typography>
               </div>
               
             
               
             </Toolbar>
-          </AppBar>
-        </MuiThemeProvider>
+          
+         
+              <Typography component="h1" variant="h5">
+                Show List
+              </Typography>
         
+              <form autoComplete="off" className="formoValidate">
+                <Grid container spacing={2} >
+                  <Grid item xs={12}>
+                  <img
+              width='101%' 
+              height='70%'
+                src={require("../assets/poster3.jpg")}
+                alt="cinema icon"
+              />
+              &nbsp;
+              <div className="titleName">
+                <Typography variant="h5" className="title">
+                  IFlix cinema..
+                </Typography>
+              </div>
+              <Button variant="contained" color="secondary">
+              Book Now
+      </Button>
+                  </Grid>
+
+                  <Grid item xs={12}>
+             
+                  <img
+               width='101%' 
+               height='70%'
+                src={require("../assets/poster1.jpg")}
+                alt="cinema icon"
+              />
+
+              &nbsp;
+              <div className="titleName">
+                <Typography variant="h5" className="title">
+                  IFlix cinema..
+                </Typography>
+              </div>
+              <Button variant="contained" color="secondary" >
+              Book Now
+      </Button>
+                  </Grid>
+
+                  <Grid item xs={12}>
+                  <img
+               width='101%' 
+               height='70%'
+                src={require("../assets/poster2.jpg")}
+                alt="cinema icon"
+              />
+              &nbsp;
+              <div className="titleName">
+                <Typography variant="h5" className="title">
+                  IFlix cinema..
+                </Typography>
+              </div>
+              <Button variant="contained" color="secondary">
+       Book Now
+      </Button>
+                  </Grid>
+                
+
+                
+                </Grid>
+              </form>           
+          </Container>
       </div>
         )
     }
