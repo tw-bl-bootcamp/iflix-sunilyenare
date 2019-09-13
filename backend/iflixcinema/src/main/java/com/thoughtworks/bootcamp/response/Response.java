@@ -19,5 +19,15 @@ public class Response {
 	public void setStatusMessage(String statusMessage) {
 		this.statusMessage = statusMessage;
 	}
+	public Response(int statusCode, String statusMessage) {
+		super();
+		this.statusCode = statusCode;
+		this.statusMessage = statusMessage;
+	}
+	public Response() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 }

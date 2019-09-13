@@ -3,33 +3,53 @@ package com.thoughtworks.bootcamp.service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.thoughtworks.bootcamp.dto.MovieDto;
+import com.thoughtworks.bootcamp.model.Movie;
+import com.thoughtworks.bootcamp.model.User;
+import com.thoughtworks.bootcamp.repository.MovieRepository;
+import com.thoughtworks.bootcamp.repository.UserRepository;
 import com.thoughtworks.bootcamp.response.Response;
+import com.thoughtworks.bootcamp.util.UserToken;
 
 public class MovieServiceImplementation implements MovieService {
 
+	
+	@Autowired
+	private UserToken userToken;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private MovieRepository movieRepository;
+	
 	@Override
 	public Response MovieShow(MovieDto movieDto, String token) {
 		
 		
-		if(notesDto.getTitle().isEmpty() && notesDto.getDescription().isEmpty()) {
+		if(movieDto.getTitle().isEmpty() && movieDto.getLanguage().isEmpty()) {
 			
-			throw new NotesException("Title and description are empty", -5);
+			return new Response(400,"please fill data");
 
 		}
 		
 		long id = userToken.tokenVerify(token);
-		Note notes = modelMapper.map(notesDto, Note.class);
+		Movie movie = modelMapper.map(movieDto, Movie.class);
 		Optional<User> user = userRepository.findById(id);
-		notes.setUserId(id);
-		notes.setCreated(LocalDateTime.now());
-		notes.setModified(LocalDateTime.now());
-		user.get().getNotes().add(notes);
-		notesRepository.save(notes);
+		movie.setUserId(id);
+		movie.setLanguage(movieDto.getLanguage());
+		movie.setName(movieDto.getTitle());
+		user.get().getMovie().add(movie);
+		movieRepository.save(movie);
 		userRepository.save(user.get());
 	
-		Response response = StatusHelper.statusInfo(environment.getProperty("status.notes.createdSuccessfull"), Integer.parseInt(environment.getProperty("status.success.code")));
-		return response;
+		return new Response(200,"Good To Go");
 	}
 
 }
