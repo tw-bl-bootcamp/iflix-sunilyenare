@@ -1,6 +1,5 @@
 package com.thoughtworks.bootcamp.service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -48,7 +47,7 @@ public class MovieServiceImplementation implements MovieService {
 		user.get().getMovie().add(movie);
 		movieRepository.save(movie);
 		userRepository.save(user.get());
-	
+		
 		return new Response(200,"Good To Go");
 	}
 
